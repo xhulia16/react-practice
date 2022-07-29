@@ -30,11 +30,11 @@ img{
   justify-content: center;
 }
 
-ul{
+.movie-list{
   list-style: none;
 }
 
-li{
+.movie-item{
   display: inline;
   margin: 30px;
   font-size: 12px;
@@ -42,9 +42,40 @@ li{
   height:fit-content;
 }
 
-button{
+.movie-btn{
   width: fit-content;
-  padding: 20px;
+  padding: 10px;
   font-size: 10px;
   margin:10px;
+}
+
+
+.img-cart{
+  width:50px;
+}
+
+.cart{
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid black; 
+  justify-content: center;
+}
+.cart-items__list{
+  display: grid;
+  grid-auto-flow: row;
+  gap: 15px;
+}
+
+.cart-items{
+display: grid;
+grid-auto-flow: column;
+grid-template-columns: repeat(4, 60px);
+font-size: 15px;
+place-items: center;
+gap: 15px;
+}
+
+.remove-btn{
+  width: 60px;
+  font-size: 10px;
 }

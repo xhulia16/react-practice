@@ -25,7 +25,7 @@ const MovieList: Array<Movie>=[
     id:3, 
     title:'Shoplifters', 
     thumbnail: 'https://posterspy.com/wp-content/uploads/2020/11/Shoplifters-scaled.jpg', 
-    inCart:false, 
+    inCart:true, 
     price: 9.5
 }
 ]
