@@ -9,6 +9,25 @@ function getCartMovies(movies: Movie[]) {
 
 function App() {
   const [movies, setMovies] = useState(MovieList);
+
+  function addMovieToCart(item: Movie) {
+    if (item.inCart === false) {
+      const moviesCopy = structuredClone(movies);
+      const matchedItem = moviesCopy.find((target) => target.id === item.id);
+      matchedItem.inCart = true;
+      setMovies(moviesCopy);
+    }
+  }
+
+  function removeMovieFromCart(item: Movie) {
+    if (item.inCart === true) {
+      const moviesCopy = structuredClone(movies);
+      const matchedItem = moviesCopy.find((target) => target.id === item.id);
+      matchedItem.inCart = false;
+      setMovies(moviesCopy);
+    }
+  }
+
   return (
     <div className="App">
       <header>
@@ -21,24 +40,34 @@ function App() {
               <li className="movie-item" key={item.id}>
                 <img src={item.thumbnail}></img>
                 <h4> £{item.price}</h4>
-                <button className="movie-btn">Add to Cart</button>
+                <button
+                  className="movie-btn"
+                  onClick={() => {
+                    addMovieToCart(item);
+                  }}
+                >
+                  Add to Cart
+                </button>
               </li>
             ))}
           </ul>
         </div>
-
         <div className="cart">
           <h3>Items in cart:</h3>
           <ul className="cart-items__list">
             {getCartMovies(movies).map((item) => (
               <li className="cart-items">
-                <img
-                  className="img-cart"
-                  src={item.thumbnail}
-                ></img>
+                <img className="img-cart" src={item.thumbnail}></img>
                 <h4>{item.title}</h4>
                 <h4>£{item.price}</h4>
-                <button className="remove-btn">Remove</button>
+                <button
+                  className="remove-btn"
+                  onClick={() => {
+                    removeMovieFromCart(item);
+                  }}
+                >
+                  Remove
+                </button>
               </li>
             ))}
           </ul>
